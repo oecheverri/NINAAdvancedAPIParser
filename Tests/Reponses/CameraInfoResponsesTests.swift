@@ -13,11 +13,37 @@ import Testing
 struct CameraInfoResponsesTests {
 
     @Test
-    func testCanParseCameraInfoResponses() throws {
+    func testCanDecodeZWOCameraInfoResponse() throws {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXXXX"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+
+        let response = try decoder.decode(
+            NINAResponse<CameraInfo>.self, from: TestData.connectedZwoCameraResponse)
+
+        let cameraInfo = try #require(response.response)
+        #expect(cameraInfo.name == "ZWO ASI2400MC Pro")
+        #expect(cameraInfo.connected == true)
+
+    }
+    @Test
+    func testCanParseCameraInfoResponses() throws {
+        let isoDateFormatter = ISO8601DateFormatter()
+        isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXXXX"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+
+        let expectedDate = try #require(
+            isoDateFormatter.date(from: "2024-12-31T10:44:01.5213091-05:00"))
         let response = try decoder.decode(
             NINAResponse<CameraInfo>.self, from: TestData.cameraInfoResponse)
-
         let modelObject = try #require(response.response, "Missing model object in response")
 
         #expect(modelObject.targetTemp == 42.0)
@@ -31,13 +57,13 @@ struct CameraInfoResponsesTests {
         #expect(modelObject.binX == 42)
         #expect(modelObject.binY == 42)
         #expect(modelObject.bitDepth == 42)
-        #expect(modelObject.binningModes.count == 1)
-        #expect(modelObject.binningModes[0].name == "4x4")
-        #expect(modelObject.binningModes[0].x == 42)
-        #expect(modelObject.binningModes[0].y == 42)
+        #expect(modelObject.binningModes?.count == 1)
+        #expect(modelObject.binningModes?[0].name == "4x4")
+        #expect(modelObject.binningModes?[0].x == 42)
+        #expect(modelObject.binningModes?[0].y == 42)
         #expect(modelObject.exposureMin == 42)
         #expect(modelObject.exposureMax == 42)
-        #expect(modelObject.exposureEndTime == "300")
+        #expect(modelObject.exposureEndTime == expectedDate)
         #expect(modelObject.lastDownloadTime == 42)
         #expect(modelObject.sensorType == 42)
         #expect(modelObject.bayerOffsetX == 42)
@@ -45,8 +71,8 @@ struct CameraInfoResponsesTests {
         #expect(modelObject.isExposing == true)
         #expect(modelObject.liveViewEnabled == true)
         #expect(modelObject.canShowLiveView == true)
-        #expect(modelObject.supportedActions.count == 1)
-        #expect(modelObject.supportedActions[0] == "Record")
+        #expect(modelObject.supportedActions?.count == 1)
+        #expect(modelObject.supportedActions?[0] == "Record")
         #expect(modelObject.canSetUSBLimit == true)
         #expect(modelObject.usbLimitMin == 42)
         #expect(modelObject.usbLimitMax == 42)
@@ -63,6 +89,19 @@ struct CameraInfoResponsesTests {
         #expect(modelObject.usbLimit == 42)
         #expect(modelObject.isSubSampleEnabled == true)
         #expect(modelObject.cameraState == 42)
+
+    }
+
+    @Test func handlesDisconnectedCameraInfo() async throws {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXXXX"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        let response = try decoder.decode(
+            NINAResponse<CameraInfo>.self, from: TestData.disconnectedCameraInfoResponse)
+
+        #expect(response.response?.connected == false)
 
     }
 }

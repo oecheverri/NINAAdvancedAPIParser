@@ -29,13 +29,24 @@ struct FilterWheelInfoResponsesTest {
         #expect(response.response?.deviceId == "asdfgh123456")
         #expect(response.response?.isMoving == true)
         #expect(response.response?.supportedActions == ["Action1", "Action2"])
-        #expect(response.response?.selectedFilter.name == "Red")
-        #expect(response.response?.selectedFilter.id == 42)
-        #expect(response.response?.availableFilters.count == 2)
-        #expect(response.response?.availableFilters[0].name == "Red")
-        #expect(response.response?.availableFilters[0].id == 42)
-        #expect(response.response?.availableFilters[1].name == "Green")
-        #expect(response.response?.availableFilters[1].id == 43)
+        #expect(response.response?.selectedFilter?.name == "Red")
+        #expect(response.response?.selectedFilter?.id == 42)
+        #expect(response.response?.availableFilters?.count == 2)
+        #expect(response.response?.availableFilters?[0].name == "Red")
+        #expect(response.response?.availableFilters?[0].id == 42)
+        #expect(response.response?.availableFilters?[1].name == "Green")
+        #expect(response.response?.availableFilters?[1].id == 43)
 
+    }
+
+    @Test func handlesDisconnectedFilterWheel() throws {
+        let decoder = JSONDecoder()
+        let response: NINAResponse<FilterWheelInfo> =
+            try decoder.decode(
+                NINAResponse<FilterWheelInfo>.self,
+                from: TestData.disconnectedFilterWheelInfoResponse
+            )
+
+        #expect(response.response?.connected == false)
     }
 }

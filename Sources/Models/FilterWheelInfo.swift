@@ -7,16 +7,16 @@
 
 struct FilterWheelInfo: ParseableModel {
     let connected: Bool
-    let name: String
-    let displayName: String
-    let description: String
-    let driverInfo: String
-    let driverVersion: String
-    let deviceId: String
-    let isMoving: Bool
-    let supportedActions: [String]
-    let selectedFilter: FilterInfo
-    let availableFilters: [FilterInfo]
+    let name: String?
+    let displayName: String?
+    let description: String?
+    let driverInfo: String?
+    let driverVersion: String?
+    let deviceId: String?
+    let isMoving: Bool?
+    let supportedActions: [String]?
+    let selectedFilter: FilterInfo?
+    let availableFilters: [FilterInfo]?
 }
 
 extension FilterWheelInfo {

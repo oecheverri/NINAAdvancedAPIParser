@@ -6,7 +6,7 @@ let package = Package(
     name: "NINAAdvancedModelsKit",
     platforms: [
         .macOS(.v13),
-        .iOS(.v13)
+        .iOS(.v13),
     ],
     products: [
         .library(
@@ -19,6 +19,6 @@ let package = Package(
         .testTarget(
             name: "NINAAdvancedModelsKitTests",
             dependencies: ["NINAAdvancedModelsKit"]
-        )
+        ),
     ]
 )

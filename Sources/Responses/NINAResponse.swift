@@ -7,13 +7,13 @@
 import Foundation
 
 struct NINAResponse<Model: ParseableModel>: Codable {
-    
+
     let response: Model?
     let error: String
     let statusCode: Int
     let success: Bool
     let type: String
-    
+
 }
 
 extension NINAResponse {

@@ -524,4 +524,66 @@ enum TestData {
           "Type": "API"
         }
         """.data(using: .utf8)!
+
+    // MARK: - GuiderInfo Model Responses
+    static let simulatedGuiderConnectedResponse = """
+        {
+          "Response": {
+            "CanClearCalibration": true,
+            "CanSetShiftRate": true,
+            "CanGetLockPosition": true,
+            "SupportedActions": [],
+            "RMSError": {
+              "RA": {
+                "Pixel": 0.10499843892319798,
+                "Arcseconds": 0.10828699003027253
+              },
+              "Dec": {
+                "Pixel": 0.12562627683930966,
+                "Arcseconds": 0.12956089182991684
+              },
+              "Total": {
+                "Pixel": 0.16372731479144037,
+                "Arcseconds": 0.16885525429070827
+              },
+              "PeakRA": {
+                "Pixel": 0.262,
+                "Arcseconds": 0.27020584000000003
+              },
+              "PeakDec": {
+                "Pixel": 0.42,
+                "Arcseconds": 0.4331544
+              }
+            },
+            "PixelScale": 1.03132,
+            "Connected": true,
+            "Name": "PHD2",
+            "DisplayName": "PHD2",
+            "Description": "PHD2 Guider",
+            "DriverInfo": "PHD2 Guider",
+            "DriverVersion": "1.0",
+            "DeviceId": "PHD2_Single"
+          },
+          "Error": "",
+          "StatusCode": 200,
+          "Success": true,
+          "Type": "API"
+        }
+        """.data(using: .utf8)!
+
+    static let simulatedGuiderDisconnectedRepsonse = """
+        {
+          "Response": {
+            "CanClearCalibration": false,
+            "CanSetShiftRate": false,
+            "CanGetLockPosition": false,
+            "PixelScale": 0.0,
+            "Connected": false
+          },
+          "Error": "",
+          "StatusCode": 200,
+          "Success": true,
+          "Type": "API"
+        }
+        """.data(using: .utf8)!
 }

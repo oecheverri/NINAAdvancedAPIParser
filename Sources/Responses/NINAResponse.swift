@@ -6,6 +6,12 @@
 //
 import Foundation
 
+typealias CameraInfoResponse = NINAResponse<CameraInfo>
+typealias FilterWheelInfoResponse = NINAResponse<FilterWheelInfo>
+typealias FocuserInfoResponse = NINAResponse<FocuserInfo>
+typealias GuiderInfoResponse = NINAResponse<GuiderInfo>
+typealias MountInfoResponse = NINAResponse<MountInfo>
+
 struct NINAResponse<Model: ParseableModel>: Codable {
 
     let response: Model?

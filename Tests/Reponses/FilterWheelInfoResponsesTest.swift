@@ -8,7 +8,7 @@
 import Foundation
 import Testing
 
-@testable import NINAAdvancedModelsKit
+@testable import NINAAdvancedAPIModelsKit
 
 struct FilterWheelInfoResponsesTest {
     @Test

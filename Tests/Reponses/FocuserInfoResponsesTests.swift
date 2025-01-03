@@ -8,7 +8,7 @@
 import Foundation
 import Testing
 
-@testable import NINAAdvancedModelsKit
+@testable import NINAAdvancedAPIModelsKit
 
 struct FocuserInfoResponsesTests {
 
@@ -46,4 +46,5 @@ struct FocuserInfoResponsesTests {
         #expect(focuserInfo.connected == false)
 
     }
+
 }

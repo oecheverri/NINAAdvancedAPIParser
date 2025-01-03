@@ -25,19 +25,8 @@ struct FocuserInfo: ParseableModel {
 
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        do {
-            self.stepSize = try container.decodeIfPresent(Int.self, forKey: .stepSize)
-        } catch {
-            self.stepSize = nil
-        }
-
-        do {
-            self.temperature = try container.decodeIfPresent(Double.self, forKey: .temperature)
-        } catch {
-            self.temperature = nil
-        }
-
+        self.stepSize = try? container.decodeIfPresent(Int.self, forKey: .stepSize)
+        self.temperature = try? container.decodeIfPresent(Double.self, forKey: .temperature)
         self.position = try container.decodeIfPresent(Int.self, forKey: .position)
         self.isMoving = try container.decodeIfPresent(Bool.self, forKey: .isMoving)
         self.isSettling = try container.decodeIfPresent(Bool.self, forKey: .isSettling)

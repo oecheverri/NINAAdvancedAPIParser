@@ -129,4 +129,11 @@ extension CameraInfo {
         case displayName = "DisplayName"
         case deviceId = "DeviceId"
     }
+
+    static var dateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXXXX"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        return dateFormatter
+    }
 }

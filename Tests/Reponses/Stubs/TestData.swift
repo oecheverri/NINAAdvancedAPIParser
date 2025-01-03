@@ -368,4 +368,160 @@ enum TestData {
           "Type": "API"
         }
         """.data(using: .utf8)!
+
+    // MARK: - Mount Info Responses
+
+    static let simulatorMountResponse = """
+        {
+          "Response": {
+            "SiderealTime": 21.21922905209341,
+            "RightAscension": 21.210437985417972,
+            "Declination": 0.2400201363469705,
+            "SiteLatitude": 45.3376666666667,
+            "SiteLongitude": -76.4405,
+            "SiteElevation": 180.0,
+            "RightAscensionString": "21:12:38",
+            "DeclinationString": "00° 14' 24\\"",
+            "Coordinates": {
+              "RA": 21.210437985417972,
+              "RAString": "21:12:38",
+              "RADegrees": 318.1565697812696,
+              "Dec": 0.2400201363469705,
+              "DecString": "00° 14' 24\\"",
+              "Epoch": 2,
+              "DateTime": {
+                "Now": "2024-12-31T14:36:03.8433094-05:00",
+                "UtcNow": "2024-12-31T19:36:03.8433217Z",
+                "MinValue": "0001-01-01T00:00:00",
+                "MaxValue": "9999-12-31T23:59:59.9999999"
+              }
+            },
+            "TimeToMeridianFlip": 0.17890054391666665,
+            "SideOfPier": 1,
+            "Altitude": 44.90220288008495,
+            "AltitudeString": "44° 54' 08\\"",
+            "Azimuth": 180.18616771806197,
+            "AzimuthString": "180° 11' 10\\"",
+            "SiderealTimeString": "21:13:09",
+            "HoursToMeridianString": "00:00:44",
+            "AtPark": false,
+            "TrackingRate": {
+              "TrackingMode": 0
+            },
+            "TrackingEnabled": true,
+            "TrackingModes": [
+              0,
+              3,
+              1,
+              2,
+              4,
+              5
+            ],
+            "AtHome": false,
+            "CanFindHome": true,
+            "CanPark": true,
+            "CanSetPark": true,
+            "CanSetTrackingEnabled": true,
+            "CanSetDeclinationRate": true,
+            "CanSetRightAscensionRate": true,
+            "EquatorialSystem": 2,
+            "HasUnknownEpoch": false,
+            "TimeToMeridianFlipString": "00:10:44",
+            "Slewing": false,
+            "GuideRateRightAscensionArcsecPerSec": 15.0,
+            "GuideRateDeclinationArcsecPerSec": 15.0,
+            "CanMovePrimaryAxis": true,
+            "CanMoveSecondaryAxis": true,
+            "PrimaryAxisRates": [
+              {
+                "Item1": 0.0,
+                "Item2": 6.666666666666667
+              },
+              {
+                "Item1": 10.0,
+                "Item2": 20.0
+              }
+            ],
+            "SecondaryAxisRates": [
+              {
+                "Item1": 0.0,
+                "Item2": 6.666666666666667
+              },
+              {
+                "Item1": 10.0,
+                "Item2": 20.0
+              }
+            ],
+            "SupportedActions": [
+              "AssemblyVersionNumber",
+              "SlewToHA",
+              "AvailableTimeInThisPointingState",
+              "TimeUntilPointingStateCanChange"
+            ],
+            "AlignmentMode": 2,
+            "CanPulseGuide": true,
+            "IsPulseGuiding": false,
+            "CanSetPierSide": true,
+            "CanSlew": true,
+            "UTCDate": "2024-12-31T19:36:02.375",
+            "Connected": true,
+            "Name": "Telescope Simulator for .NET",
+            "DisplayName": "Telescope Simulator for .NET",
+            "DeviceId": "ASCOM.Simulator.Telescope"
+          },
+          "Error": "",
+          "StatusCode": 200,
+          "Success": true,
+          "Type": "API"
+        }
+        """.data(using: .utf8)!
+
+    static let disconnectedMountResponse = """
+        {
+          "Response": {
+            "SiderealTime": 0.0,
+            "RightAscension": 0.0,
+            "Declination": 0.0,
+            "SiteLatitude": 0.0,
+            "SiteLongitude": 0.0,
+            "SiteElevation": 0.0,
+            "TimeToMeridianFlip": 0.0,
+            "SideOfPier": 0,
+            "Altitude": "NaN",
+            "AltitudeString": "",
+            "Azimuth": "NaN",
+            "AzimuthString": "",
+            "AtPark": false,
+            "TrackingRate": {
+              "TrackingMode": 0
+            },
+            "TrackingEnabled": false,
+            "AtHome": false,
+            "CanFindHome": false,
+            "CanPark": false,
+            "CanSetPark": false,
+            "CanSetTrackingEnabled": false,
+            "CanSetDeclinationRate": false,
+            "CanSetRightAscensionRate": false,
+            "EquatorialSystem": 0,
+            "HasUnknownEpoch": false,
+            "Slewing": false,
+            "GuideRateRightAscensionArcsecPerSec": 0.0,
+            "GuideRateDeclinationArcsecPerSec": 0.0,
+            "CanMovePrimaryAxis": false,
+            "CanMoveSecondaryAxis": false,
+            "AlignmentMode": 0,
+            "CanPulseGuide": false,
+            "IsPulseGuiding": false,
+            "CanSetPierSide": false,
+            "CanSlew": false,
+            "UTCDate": "0001-01-01T00:00:00",
+            "Connected": false
+          },
+          "Error": "",
+          "StatusCode": 200,
+          "Success": true,
+          "Type": "API"
+        }
+        """.data(using: .utf8)!
 }

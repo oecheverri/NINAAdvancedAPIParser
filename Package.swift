@@ -3,22 +3,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "NINAAdvancedModelsKit",
+    name: "NINAAdvancedAPIModelsKit",
     platforms: [
         .macOS(.v13),
         .iOS(.v13),
     ],
     products: [
         .library(
-            name: "NINAAdvancedModelsKit",
-            targets: ["NINAAdvancedModelsKit"]
+            name: "NINAAdvancedAPIModelsKit",
+            targets: ["NINAAdvancedAPIModelsKit"]
         )
     ],
     targets: [
-        .target(name: "NINAAdvancedModelsKit"),
+        .target(name: "NINAAdvancedAPIModelsKit"),
         .testTarget(
-            name: "NINAAdvancedModelsKitTests",
-            dependencies: ["NINAAdvancedModelsKit"]
+            name: "NINAAdvancedAPIModelsKitTests",
+            dependencies: ["NINAAdvancedAPIModelsKit"]
         ),
     ]
 )

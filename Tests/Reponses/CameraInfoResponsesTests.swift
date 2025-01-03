@@ -8,16 +8,15 @@
 import Foundation
 import Testing
 
-@testable import NINAAdvancedModelsKit
+@testable import NINAAdvancedAPIModelsKit
 
 struct CameraInfoResponsesTests {
 
     @Test
     func testCanDecodeZWOCameraInfoResponse() throws {
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXXXX"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let dateFormatter = CameraInfo.dateFormatter
+
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
 
